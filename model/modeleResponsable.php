@@ -1,27 +1,13 @@
 <?php
-	class Responsable {
+	class Responsable extends user{
 		private $idResp;
-		private $nom;
-		private $prenom;
-		private $email;
-		private $login;
-		private $mdp;
 
-		function __construct($prenom,$nom,$mdp,$email) {
-			$this->idResp = NULL;
-			$this->prenom = strip_tags($prenom);
-			$this->nom = strip_tags($nom);
-			$this->email = strip_tags($email);
-			$this->login = strip_tags($prenom).strip_tags($nom);
-			$this->mdp = strip_tags($mdp);
-		}
-
-		static function modifierInfo($co, $id, $prenom, $nom, $mdp, $email) {
+		function modifierInfo($co, $id, $prenom, $nom, $mdp, $email) {
 			$prenom = strip_tags($prenom);
 			$nom = strip_tags($nom);
 			$mdp = strip_tags($mdp);
 			$email = strip_tags($email);
-			$req = mysqli_query($co, "UPDATE  Responsable SET prenom='$prenom', nom = '$nom', email = '$email', motDePasse = '$mdp' WHERE id_responsable = '$id'");
+			mysqli_query($co, "UPDATE  Responsable SET prenom='$prenom', nom = '$nom', email = '$email', motDePasse = '$mdp' WHERE id_responsable = '$id'");
 		}
 
 		function inscription($co) {
@@ -38,22 +24,23 @@
 			mysqli_free_result($req);
 		}
 
-		static function connexion($co, $login, $mdp) {
+		function connexion($co) {
 			$erreur = false;
-			$req = mysqli_query($co, "SELECT * FROM Responsable WHERE login='$login' AND motDePasse= '$mdp'");
+			$req = mysqli_query($co, "SELECT * FROM Responsable WHERE login='$this->login' AND motDePasse= '$this->mdp'");
 			if (mysqli_num_rows($req) != 1) {
 				$erreur = true;
 			}
 			else {
 					$result = mysqli_fetch_assoc($req);
+                    $this->idResp = $result['id_responsable'];
+                    $this->prenom = $result['prenom'];
+                    $this->nom = $result['nom'];
+                    $this->email = $result['email'];
 					session_start();
-					$_SESSION['id'] = $result['id_responsable'];
+					$_SESSION['id'] = $this->idResp;
 					$_SESSION['type'] = "responsable";
-					$_SESSION['login'] = $login;
-					$_SESSION['mdp'] = $mdp;
-					$_SESSION['prenom'] = $result['prenom'];
-					$_SESSION['nom'] = $result['nom'];
-					$_SESSION['email'] = $result['email'];
+					$_SESSION['login'] = $this->login;
+					$_SESSION['mdp'] = $this->mdp;
 					
 			}
 			mysqli_free_result($req);
