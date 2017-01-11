@@ -251,8 +251,6 @@
     }
   };
 
-  // TODO: consider not making this a jQuery function
-  // TODO: need way to reflow vs. re-initialize
   /**
    * The Foundation jQuery method.
    * @param {String|Array} method - An action to perform on the current jQuery object.
@@ -676,7 +674,6 @@
    * @function
    * @param {jQuery || HTML} element - jQuery object or DOM element for which to get the dimensions. Can be any element other that document or window.
    * @returns {Object} - nested object of integer pixel values
-   * TODO - if element is window, return only those values.
    */
   function GetDimensions(elem, test) {
     elem = elem.length ? elem[0] : elem;
@@ -727,7 +724,6 @@
    * @param {Number} vOffset - integer pixel value of desired vertical separation between anchor and element.
    * @param {Number} hOffset - integer pixel value of desired horizontal separation between anchor and element.
    * @param {Boolean} isOverflow - if a collision event is detected, sets to true to default the element to full width - any desired offset.
-   * TODO alter/rewrite to work with `em` values as well/instead of pixels
    */
   function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
     var $eleDims = GetDimensions(element),
@@ -1441,7 +1437,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       /**
        * Updates position of modal
-       * TODO:  Figure out if we actually need to cache these values or if it doesn't matter
        * @private
        */
 

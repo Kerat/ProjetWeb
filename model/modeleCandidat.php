@@ -1,11 +1,21 @@
 <?php
-	class Candidat extends user {
+require_once "User.php";
+	class Candidat extends User {
         private $idCand;
 		private $dateNaissance;
 		private $tel;
 
-		function __construct($prenom,$nom,$mdp,$email,$dateNaissance) {
-			parent::__construct5($prenom,$nom,$mdp,$email);
+		function __construct()
+		{
+			$a = func_get_args();
+			$i = func_num_args();
+			if (method_exists($this,$f='__construct'.$i)) {
+				call_user_func_array(array($this,$f),$a);
+			}
+		}
+
+		function __construct5($prenom,$nom,$mdp,$email,$dateNaissance) {
+			parent::__construct($prenom,$nom,$mdp,$email);
 		    $this->idCand = NULL;
 			$this->dateNaissance = strip_tags($dateNaissance);
 			$this->tel = '';
@@ -28,10 +38,10 @@
     }
 
 		function connexion($co) {
-			$erreur = false;
-			$req = mysqli_query($co, "SELECT * FROM candidat WHERE login='$this->login' AND motDePasse= '$this->mdp'");
+			$succes = true;
+			$req = mysqli_query($co, "SELECT * FROM Candidat WHERE login='$this->login' AND motDePasse= '$this->mdp'") OR DIE("Candidat : Erreur requete connexion.");
 			if (mysqli_num_rows($req) != 1) {
-				$erreur = true;
+				$succes = false;
 			}
 			else {
                 $result = mysqli_fetch_assoc($req);
@@ -39,19 +49,19 @@
                 $this->prenom = $result['prenom'];
                 $this->nom = $result['nom'];
                 $this->email = $result['email'];
-                $this->dateNaissance = $result["dateNaissance"];
-                $this->tel = $result["tel"];
+                $this->dateNaissance = $result["dateDeNaissance"];
+                $this->tel = $result["numeroTelephone"];
 
                 session_start();
-                $_SESSION['id'] = $this->idResp;
-                $_SESSION['type'] = "responsable";
+                $_SESSION['id'] = $this->idCand;
+                $_SESSION['type'] = "candidat";
                 $_SESSION['login'] = $this->login;
                 $_SESSION['mdp'] = $this->mdp;
 					
 			}
 			mysqli_free_result($req);
 
-			return $erreur;
+			return $succes;
 		}
 
 		static function deconnexion() {

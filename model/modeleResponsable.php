@@ -1,5 +1,6 @@
 <?php
-	class Responsable extends user{
+require_once "User.php";
+	class Responsable extends User{
 		private $idResp;
 
 		function modifierInfo($co, $id, $prenom, $nom, $mdp, $email) {
@@ -25,10 +26,10 @@
 		}
 
 		function connexion($co) {
-			$erreur = false;
+			$succes= true;
 			$req = mysqli_query($co, "SELECT * FROM Responsable WHERE login='$this->login' AND motDePasse= '$this->mdp'");
 			if (mysqli_num_rows($req) != 1) {
-				$erreur = true;
+				$succes = false;
 			}
 			else {
 					$result = mysqli_fetch_assoc($req);
@@ -45,7 +46,7 @@
 			}
 			mysqli_free_result($req);
 
-			return $erreur;
+			return $succes;
 		}
 
 		static function deconnexion() {
