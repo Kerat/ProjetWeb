@@ -1,5 +1,6 @@
 <?php
 	class Candidat {
+		private $id_cand;
 		private $nom;
 		private $prenom;
 		private $dateNaissance;
@@ -7,16 +8,19 @@
 		private $tel;
 		private $login;
 		private $mdp;
+		private static $nbrCandidat=0;
 
-		function __construct($prenom,$nom,$mdp,$email,$dateNaissance) {
-			$this->idCand = NULL;
+		function __construct($prenom,$nom,$mdp,$mail,$dateNaissance) {
+			$this->id_cand =Candidat::$nbrCandidat;
 			$this->prenom = strip_tags($prenom);
 			$this->nom = strip_tags($nom);
 			$this->dateNaissance = strip_tags($dateNaissance);
-			$this->email = strip_tags($email);
+			$this->email = strip_tags($mail);
 			$this->tel = '';
 			$this->login = strip_tags($prenom).strip_tags($nom);
 			$this->mdp = strip_tags($mdp);
+
+			Candidat::$nbrCandidat=Candidat::$nbrCandidat+1;
 		}
 
 		static function modifierInfo($co, $id, $prenom, $nom, $mdp, $email, $tel) {
