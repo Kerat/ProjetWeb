@@ -3,11 +3,13 @@
 		private $id_offre;
 		private $description;
 		private $instructions;
+		private $id_ent;
 
-		function __construct($desc,$instructions) {
+		function __construct($desc,$instructions, $id_ent) {
 			$this->id_offre=NULL;
 			$this->description = strip_tags($desc);
 			$this->instructions = strip_tags($instructions);
+			$this->$id_ent=strip_tags($id_ent);
 		}
 
 
