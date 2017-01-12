@@ -4,7 +4,7 @@ require_once "../model/modeleCandidat.php";
 require_once "../model/modeleResponsable.php";
 
 if($_SESSION['type']="candidat") {
-    $candidat = new Candidat($_SESSION['id'], $co);
+    $candidat = new Candidat($_SESSION['id'], $co, NULL);
     if (isset($_POST["tel"]) && !empty($_POST["tel"])) {
         $candidat->setTel($_POST["tel"]);
     }
