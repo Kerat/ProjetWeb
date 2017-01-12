@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/app.css" />
 </head>
+<?php session_start();?>
 <body>
 <div class="top-bar">
     <div class="top-bar-left">

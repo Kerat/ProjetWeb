@@ -53,16 +53,5 @@ require_once "User.php";
 
 			return $succes;
 		}
-
-		static function deconnexion() {
-			session_destroy();
-			unset($_SESSION['id']);
-			unset($_SESSION['type']);
-			unset($_SESSION['login']);
-			unset($_SESSION['mdp']);
-			unset($_SESSION['prenom']);
-			unset($_SESSION['nom']);
-			unset($_SESSION['email']);		
-		}
 	}
 ?>
