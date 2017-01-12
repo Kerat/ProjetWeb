@@ -12,6 +12,8 @@
     position:fixed;
     height:50px;
     background-color: #81b92f;
+    width: 100%;
+    bottom: 0;
 }
 body{
     margin-bottom: 50px;
