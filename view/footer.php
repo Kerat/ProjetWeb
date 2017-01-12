@@ -1,3 +1,4 @@
+</div>
 <div class="title-bar footer">
     TEST
 </div>

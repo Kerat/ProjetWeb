@@ -20,14 +20,7 @@ class User
         $this->login = $login;
         $this->mdp = $mdp;
     }
-    function __construct5($prenom,$nom,$mdp,$email, $login){
-        $this->login = $login;
-        $this->prenom = strip_tags($prenom);
-        $this->nom = strip_tags($nom);
-        $this->email = strip_tags($email);
-        $this->login = strip_tags($prenom) . strip_tags($nom);
-        $this->mdp = strip_tags($mdp);
-    }
+
     function __construct4($prenom,$nom,$mdp,$email)
     {
         $this->prenom = strip_tags($prenom);
@@ -116,6 +109,11 @@ class User
     {
         $this->mdp = $mdp;
     }
-
-
+    static function deconnexion() {
+        session_destroy();
+        unset($_SESSION['id']);
+        unset($_SESSION['type']);
+        unset($_SESSION['login']);
+        unset($_SESSION['mdp']);
+    }
 }
