@@ -20,7 +20,7 @@ class Activite
         $this->dateActivite=$dateAct;
         $this->infos=$infos;
         $this->offre=$offre;
-        $this->candidat=new Candidat();
+        $this->candidat=$candidat;
 
     }
 
