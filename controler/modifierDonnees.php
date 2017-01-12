@@ -2,7 +2,7 @@
 require_once "../model/connexion.php";
 require_once "../model/modeleCandidat.php";
 require_once "../model/modeleResponsable.php";
-
+session_start();
 
     $candidat = new Candidat($_SESSION['id'], $co, NULL);
     if (isset($_POST["tel"]) && !empty($_POST["tel"])) {

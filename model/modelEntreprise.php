@@ -26,4 +26,9 @@ class Entreprise
 
     }
 
+    function getNom()
+    {
+        return $this->name;
+    }
+
 }

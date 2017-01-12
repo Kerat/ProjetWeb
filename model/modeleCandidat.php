@@ -27,7 +27,6 @@ require_once "User.php";
 			$req = mysqli_query($co, "SELECT * FROM Candidat WHERE id_candidat='$id'") or die("erreur req");
 
 				$result = mysqli_fetch_assoc($req);
-				echo $result['prenom'];
 				parent::__construct($result['prenom'], $result['nom'], $result['motDePasse'], $result['email'], $result['login']);
 				$this->idCand=$result['id_candidat'];
 				$this->dateNaissance=$result['dateDeNaissance'];
@@ -56,9 +55,7 @@ require_once "User.php";
 		}
 		function ecrireModif($co)
 		{
-			$prenom=$this->getPrenom();
-			$req = mysqli_query($co, "UPDATE candidat SET prenom='$this->prenom', nom='$this->nom', email='$this->email', numeroTelephone='$this->tel', login='$this->login'  WHERE id_candidat=1");
-			echo mysqli_affected_rows($co);
+			$req = mysqli_query($co, "UPDATE candidat SET prenom='$this->prenom', nom='$this->nom', email='$this->email', numeroTelephone='$this->tel', login='$this->login', motDePasse='$this->mdp' WHERE id_candidat=$this->idCand");
 		}
 		static function afficherLogin($co) {
       		$req = mysqli_query($co, 'SELECT id_candidat, login FROM candidat');

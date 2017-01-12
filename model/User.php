@@ -30,6 +30,16 @@ class User
         $this->mdp = strip_tags($mdp);
     }
 
+    function __construct5($prenom,$nom,$mdp,$email, $login){
+        $this->login = $login;
+        $this->prenom = strip_tags($prenom);
+        $this->nom = strip_tags($nom);
+        $this->email = strip_tags($email);
+        $this->login = strip_tags($prenom) . strip_tags($nom);
+        $this->mdp = strip_tags($mdp);
+    }
+
+
     /**
      * @return mixed
      */
