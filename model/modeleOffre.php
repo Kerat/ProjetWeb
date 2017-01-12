@@ -15,5 +15,10 @@
 			$req = mysqli_query($co, "INSERT OR UPDATE INTO Offre(id_offre, description, instructions) VALUES ('$this->id','$this->description','$this->instructions')");
 			$this->id_offre=mysqli_insert_id();
 		}
+
+		function getID()
+		{
+			return $this->id_offre;
+		}
 	}
 ?>

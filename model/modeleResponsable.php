@@ -25,6 +25,10 @@ require_once "User.php";
 			}
 			mysqli_free_result($req);
 		}
+		public function getId()
+		{
+			return $this->idResp;
+		}
 
 		function connexion($co) {
 			$succes= true;

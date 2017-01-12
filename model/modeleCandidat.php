@@ -20,6 +20,10 @@ require_once "User.php";
 			$this->dateNaissance = strip_tags($dateNaissance);
 			$this->tel = '';
 		}
+		function getId()
+		{
+			return $this->idCand;
+		}
 
 		function inscription($co) {
 
