@@ -13,6 +13,7 @@ require_once "User.php";
 
 		function inscription($co) {
 			$req = mysqli_query($co, "INSERT INTO Responsable(id_responsable, nom, prenom, email, login, motDePasse) VALUES ('$this->idResp','$this->nom','$this->prenom','$this->email','$this->login','$this->mdp')");
+			$this->idResp=mysqli_insert_id();
 		}
 		
 		static function afficherLogin($co) {
