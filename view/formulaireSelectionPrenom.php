@@ -13,15 +13,13 @@ if (!empty($_POST['nom']))$top=$_POST['nom'];
 ?>
 
 <form method="post"">
-    <select name="nom" onchange="this.form.submit()">
-        <option>Selectionner le nom</option>
+    <select  name="nom" onchange="this.form.submit()" size="3">
         <?php Candidat::afficherListeNom($co, $top);?>
     </select>
 </form>
 <?php if (isset($_POST['nom'])&&!empty($_POST['nom'])){?>
 <form method="post" action="../controler/selectionCandidat.php">
-    <select name="id_cand">
-        <option>Selectionner le prenom</option>
+    <select name="id_cand" size="3">
         <?php Candidat::afficherListePrenom($co, $_POST['nom'])?>
     </select>
 </form>
