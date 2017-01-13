@@ -1,5 +1,5 @@
 <?php
-function isConnected(){
+ function isConnected(){
     if(!isset($_SESSION) or empty($_SESSION["login"]) or empty($_SESSION["mdp"])){
         return false;
     }

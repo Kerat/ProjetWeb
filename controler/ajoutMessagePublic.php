@@ -1,6 +1,7 @@
 <?php
 require_once "../model/connexion.php";
 require_once "../model/modeleInformation.php";
+require_once "../model/functions.php";
 
 /**
  * Created by PhpStorm.
@@ -8,20 +9,28 @@ require_once "../model/modeleInformation.php";
  * Date: 13/01/2017
  * Time: 13:09
  */
-if (isset($_SESSION['type'])&& ($_SESSION['type'])=="responsable")
+if (isConnected())
 {
-    if (isset($_POST['titreMessage'])&&!empty($_POST['titreMessage']))$titre=$_POST['titreMessage'];
-    if (isset($_POST['contenuMessage'])&&!empty($_POST['contenuMessage']))$contenu=$_POST['contenuMessage'];
-    else
+    if (isset($_SESSION['type'])&& ($_SESSION['type'])=="responsable")
     {
-        include_once ('../view/formulaireAjoutMessagePublic.html');
-        die ("Vous n'avez pas rempli les deux champs");
-    }
+        if (isset($_POST['titreMessage'])&&!empty($_POST['titreMessage']))$titre=$_POST['titreMessage'];
+        if (isset($_POST['contenuMessage'])&&!empty($_POST['contenuMessage']))$contenu=$_POST['contenuMessage'];
+        else
+        {
+            include_once ('../view/formulaireAjoutMessagePublic.html');
+            die ("Vous n'avez pas rempli les deux champs");
+        }
 
-    $titre=$_POST['titreMessage'];
-    $contenu=$_POST['contenuMessage'];
-    $message=new Information($titre, $contenu, $_SESSION['id']);
-    $message->ecritureBD($co);
+        $titre=$_POST['titreMessage'];
+        $contenu=$_POST['contenuMessage'];
+        $message=new Information($titre, $contenu, $_SESSION['id']);
+        $message->ecritureBD($co);
+    }
+    else echo 'Vous n \'avez pas la permission'.'</br>';
 }
-else echo 'Vous n\'avez pas la permission'.'</br>';
+else
+{
+    die("Vous devez etre connecte");
+}
+
 ?>
