@@ -24,3 +24,4 @@ if (isset($_SESSION['type'])&& ($_SESSION['type'])=="responsable")
     $message->ecritureBD($co);
 }
 else echo 'Vous n\'avez pas la permission'.'</br>';
+?>

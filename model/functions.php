@@ -7,3 +7,4 @@ function isConnected(){
         return true;
     }
 }
+?>

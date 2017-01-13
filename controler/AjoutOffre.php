@@ -32,3 +32,4 @@ else
     include_once('../view/formulaireAjoutOffre.php');
     die ("Vous n'avez pas renseignez d'entreprise");
 }
+?>
