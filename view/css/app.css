@@ -6,9 +6,16 @@
     color:#004871;
 }
 #menuHaut{
-    height: 65px;
     background-color: #E89F0C;
-    padding: 0;
+}
+#menuHaut .menu{
+    background-color: #E89F0C;
+}
+#menuHaut .menu a{
+    color: white;
+}
+#menuHaut .menu a:hover {
+    font-weight: bold;
 }
 #menuHautContenu{
     background-color: #E89F0C;
