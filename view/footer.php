@@ -1,6 +1,8 @@
 </div>
 <div class="title-bar footer">
-    TEST
+    <p style="text-align: center">
+        Scander Alioui - François Chaumeny - Tarek Marcé
+    </p>
 </div>
 
 <script src="js/vendor/jquery.js"></script>

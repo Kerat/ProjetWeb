@@ -11,7 +11,7 @@
         $mdp = htmlentities($_POST["password"]);
         $candidat = new Candidat($login,$mdp);
         if($candidat->connexion($co)){
-            echo "OK candidat";
+            header("Location: ../view/informations.php");
         }
         else{
             unset($candidat);
@@ -20,7 +20,7 @@
                 echo "OK responsable";
             }
             else{
-                echo "Bad id";
+                header("Location: ../view/index.php");
             }
         }
     }
