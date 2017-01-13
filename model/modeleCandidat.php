@@ -55,20 +55,23 @@ require_once "User.php";
 		}
 		function ecrireModif($co)
 		{
-			$req = mysqli_query($co, "UPDATE candidat SET prenom='$this->prenom', nom='$this->nom', email='$this->email', numeroTelephone='$this->tel', login='$this->login', motDePasse='$this->mdp' WHERE id_candidat=$this->idCand");
+			$req = mysqli_query($co, "UPDATE candidat SET prenom='$this->prenom', nom='$this->nom', email='$this->email', numeroTelephone='$this->tel', login='$this->login', motDePasse='$this->mdp' WHERE id_candidat='$this->idCand'");
 		}
-		public static function afficherListeNom($co)
+		public static function afficherListeNom($co, $top)
 		{
-			echo"rentré";
+
 			$req = mysqli_query($co, "SELECT DISTINCT(nom) FROM Candidat");
 			echo mysqli_affected_rows($co);
 			while ($data = mysqli_fetch_array($req)) {
-				echo '<option value='.$data["nom"].'>' . $data["nom"] . '</option><br/>';
+				if($data["nom"]==$top)$estPris=" selected ";
+				else $estPris='';
+				echo '<option value='.$data["nom"].$estPris.'>' . $data["nom"] . '</option><br/>';
 			}
 		}
 		public static function afficherListePrenom($co, $nom)
 		{
-			$req = mysqli_query($co, "SELECT prenom FROM Candidat WHERE nom=$nom");
+			$req = mysqli_query($co, "SELECT prenom FROM Candidat WHERE nom='$nom'");
+			echo mysqli_affected_rows($co);
 			while ($data = mysqli_fetch_array($req)) {
 				echo '<option value='.$data["id_candidat"].'>' . $data["prenom"] . '</option><br/>';
 			}

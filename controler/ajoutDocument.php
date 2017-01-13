@@ -15,9 +15,10 @@ if (isConnected())
     if(isset($_POST['nomDocument']) && !empty ($_POST['nomDocument']))$titre=$_POST['nomDocument'];
     if(isset($_FILES['avatar']))
     {
-        $dossier = '../upload/'.$titre.'_';
+        $dossier = '../upload/';
         $fichier = basename($_FILES['avatar']['name']);
-        if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier .$fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+        $name=$titre.'_'.$fichier;
+        if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier.$name)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
         {
             echo 'Upload effectue avec succes !';
         }
@@ -27,12 +28,13 @@ if (isConnected())
         }
         if($_SESSION['type']="candidat")
         {
-            $doc=new Document($_FILES['avatar']['name'], $_SESSION['id'], -1, 'upload/'.$fichier);
+            $doc=new Document($name.$_FILES['avatar']['name'], $_SESSION['id'], -1, 'upload/'.$name);
             $doc->ecritureBd($co);
         }
         else
         {
-            $doc=new Document($_FILES['avatar']['name'].'_'.$_SESSION['login'], -1, $_SESSION['id'], 'upload/'.$fichier);
+            $doc=new Document($titre.'_'.$_FILES['avatar']['name'], -1, $_SESSION['id'], 'upload/'.$fichier);
+            $doc->ecritureBd($co);
         }
     }
 }
