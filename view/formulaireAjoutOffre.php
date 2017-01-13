@@ -1,21 +1,23 @@
-<?php require_once "../model/modeleOffre.php";
+<?php require_once "../model/modelEntreprise.php";
 require_once "../model/connexion.php";
+require_once "../model/modeleOffre.php";
 ?>
 
 <link rel="stylesheet" type="text/css" href="../styles/form.css">
 
-<form method ="Post" action=#>
+<form method ="Post" action=../controler/AjoutOffre.php>
 
 	<div class="field-wrapper">
 
 		<div class="field">
-			<label for="nomSociete">Nom de la société : </label>
-			<input type="text" name="nomSociete" id="nomSociete"/>
-		</div>
-		<div>
-			<select>
-				<?php Offre::afficherListe($co);?>
+
+			<label>Parcourir entreprises:</label>
+			<select name="entreprise">
+				<option value="0" selected="selected">Sélectionner</option>
+				<?php Entreprise::afficherListe($co);?>
 			</select>
+			<label for="nomSociete">ou</label>
+			<input type="text" name="nomSociete" id="nomSociete" placeHolder="Saisir une nouvelle entreprise"/>
 		</div>
 
 		<div class="field">

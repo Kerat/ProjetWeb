@@ -24,7 +24,7 @@ class Information
     function ecritureBD($co)
     {
         mysqli_query($co, "INSERT OR UPDATE INTO Information(id_information, titre, texte, dateCreation) VALUES ('$this->id_info','$this->titre','$this->texte','$this->dateCreation')");
-        $this->id_info=mysqli_insert_id();
+        $this->id_info=mysqli_insert_id($co);
     }
 
 }

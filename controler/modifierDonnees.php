@@ -1,8 +1,8 @@
 <?php
+session_start();
 require_once "../model/connexion.php";
 require_once "../model/modeleCandidat.php";
 require_once "../model/modeleResponsable.php";
-session_start();
 
     $candidat = new Candidat($_SESSION['id'], $co, NULL);
     if (isset($_POST["tel"]) && !empty($_POST["tel"])) {
@@ -26,8 +26,12 @@ session_start();
         if ($_POST["mdpModif"] == $_POST["mdpModifConfirmation"]) {
             $candidat->setMdp($_POST['mdpModif']);
         } else {
-            echo "mot de passe non identique";
+
+            include_once('../view/formulaireModifierDonnees.html');
+            die ("Mot de passes saisis non identiques");
+
         }
     }
     $candidat->ecrireModif($co);
+    echo "Nouvelles informations enregistrees";
  ?>
