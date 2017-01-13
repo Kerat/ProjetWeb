@@ -5,7 +5,11 @@ require_once "../model/modeleOffre.php";
 
 if(isset($_POST['descriptionPoste'])&&!empty($_POST['descriptionPoste']))$desc=$_POST['descriptionPoste'];
 if(isset($_POST['instructionCandidat'])&&!empty($_POST['instructionCandidat']))$instr=$_POST['instructionCandidat'];
-else die ("Erreur : Vous n'avez pas renseignez les deux champs.");
+else
+{
+    include_once('../view/formulaireAjoutOffre.php');
+    die ("Erreur : Vous n'avez pas renseignez les deux champs.");
+}
 
 if (isset($_POST['entreprise']) && ($_POST['entreprise']!=0))
 {
@@ -18,12 +22,13 @@ if (isset($_POST['entreprise']) && ($_POST['entreprise']!=0))
         echo "Offre cree";
     }
 }
-elseif (isset($_POST['nomSociete']))
+elseif (isset($_POST['nomSociete'])&&!empty($_POST['nomSociete']))
 {
     $entreprise= new Entreprise (strip_tags($_POST['nomSociete']));
     $entreprise->ecritureBD($co);
 }
 else
 {
-    echo "Vous n'avez pas renseignez d'entreprise";
+    include_once('../view/formulaireAjoutOffre.php');
+    die ("Vous n'avez pas renseignez d'entreprise");
 }

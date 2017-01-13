@@ -12,19 +12,38 @@ class Information
     private $titre;
     private $texte;
     private $dateCreation;
+    private $id_responsable;
 
-    function __construct($title, $text)
+    function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+
+    function __construct2($title, $text)
     {
         $this->id_info=NULL;
         $this->dateCreation=date('Y-m-d');
         $this->titre=$title;
         $this->texte=$text;
     }
+    function __construct3($title, $text, $idresp)
+    {
+        $this->id_info=NULL;
+        $this->dateCreation=date('Y-m-d');
+        $this->titre=$title;
+        $this->texte=$text;
+        $this->id_responsable=$idresp;
+    }
 
     function ecritureBD($co)
     {
-        mysqli_query($co, "INSERT OR UPDATE INTO Information(id_information, titre, texte, dateCreation) VALUES ('$this->id_info','$this->titre','$this->texte','$this->dateCreation')");
+        mysqli_query($co, "INSERT INTO Information(id_information, titre, texte, dateCreation) VALUES (NULL,'$this->titre','$this->texte','$this->dateCreation')");
         $this->id_info=mysqli_insert_id($co);
-    }
+        $req = mysqli_query($co, "INSERT INTO poste (id_responsable, id_utilisateur, id_information) VALUES ($this->id_responsable, -1, '$this->id_info')");
 
+    }
 }
