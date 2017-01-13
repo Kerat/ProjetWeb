@@ -5,10 +5,10 @@ if(isConnected()){
     $connect = true;
     switch ($_SESSION["type"]){
         case "candidat":
-            $menu=array("Informations"=>"informations.php","Candidat"=>"");
+            $menu=array("Informations"=>"informations.php","Offres"=>"offres.php","Connecté comme candidat"=>"");
             break;
         case "responsable":
-            $menu=array("Responsable"=>"");
+            $menu=array("Connecté comme responsable"=>"");
             break;
         default:
             $menu=array();
