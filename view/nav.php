@@ -2,13 +2,15 @@
 require_once "../model/functions.php";
 
 if(isConnected()){
+    $menu=array("Informations"=>"informations.php","Offres"=>"offres.php");
     $connect = true;
     switch ($_SESSION["type"]){
         case "candidat":
-            $menu=array("Informations"=>"informations.php","Offres"=>"offres.php","Connecté comme candidat"=>"");
+            $menu["Mes documents"]="documents.php";
+            $menu["Connecté comme candidat"]="";
             break;
         case "responsable":
-            $menu=array("Connecté comme responsable"=>"");
+            $menu["Connecté comme responsable"]="";
             break;
         default:
             $menu=array();

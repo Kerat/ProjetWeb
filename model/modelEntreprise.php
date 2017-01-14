@@ -43,6 +43,13 @@ class Entreprise
 
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdEnt()
+    {
+        return $this->id_ent;
+    }
     function getNom()
     {
         return $this->name;

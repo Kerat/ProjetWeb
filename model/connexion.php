@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $user = "root";
-$bdd = "bdd";// le nom de votre base de données
-$passwd = "root";
+$bdd = "projetWeb";// le nom de votre base de données
+$passwd = "";
 
 $co = mysqli_connect($host , $user , $passwd, $bdd) or die("erreur de connexion");
 

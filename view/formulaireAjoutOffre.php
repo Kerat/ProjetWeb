@@ -3,9 +3,7 @@ require_once "../model/connexion.php";
 require_once "../model/modeleOffre.php";
 ?>
 
-<link rel="stylesheet" type="text/css" href="../styles/form.css">
-
-<form method ="Post" action=../controler/AjoutOffre.php>
+<form method ="Post" action=../controler/AjoutOffre.php style="margin: 10px">
 
 	<div class="field-wrapper">
 
@@ -41,9 +39,5 @@ require_once "../model/modeleOffre.php";
 
 	</div>
 
-	<div class="button valider">
-		<input type="submit" value="Valider"/>
-	</div>
-
-
+	<input class="button" type="submit" value="Valider"/>
 </form>
