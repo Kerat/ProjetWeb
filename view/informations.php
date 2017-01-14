@@ -11,13 +11,13 @@
         if(isResponsable()):
             ?>
             <div style="background-color: #eee;text-align: left">
-                <form action="../view/formulaireAjoutMessagePublic.html" method="post">
+                <form action="../view/ajoutMessage.php" method="post">
                     <input class="button" type="submit" name="ajoutInfo" value="Ajouter un message"/>
                 </form>
             </div>
             <?php
         endif;
-        $req = "SELECT * FROM Information;";
+        $req = "SELECT * FROM Information ORDER BY dateCreation DESC, id_information DESC;";
         $results = mysqli_query($co,$req);
         while($ligne = mysqli_fetch_assoc($results)){
             $titre = $ligne["titre"];

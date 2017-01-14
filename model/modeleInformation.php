@@ -41,7 +41,7 @@ class Information
 
     function ecritureBD($co)
     {
-        mysqli_query($co, "INSERT INTO Information(id_information, titre, texte, dateCreation) VALUES (NULL,'$this->titre','$this->texte','$this->dateCreation')");
+        mysqli_query($co, "INSERT INTO Information(titre, texte, dateCreation) VALUES ('$this->titre','$this->texte','$this->dateCreation')");
         $this->id_info=mysqli_insert_id($co);
         $req = mysqli_query($co, "INSERT INTO poste (id_responsable, id_utilisateur, id_information) VALUES ($this->id_responsable, -1, '$this->id_info')");
 

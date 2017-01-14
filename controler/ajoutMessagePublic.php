@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../model/connexion.php";
 require_once "../model/modeleInformation.php";
 require_once "../model/functions.php";
@@ -21,10 +22,11 @@ if (isConnected())
             die ("Vous n'avez pas rempli les deux champs");
         }
 
-        $titre=$_POST['titreMessage'];
-        $contenu=$_POST['contenuMessage'];
+        $titre=htmlentities($_POST['titreMessage']);
+        $contenu=htmlentities($_POST['contenuMessage']);
         $message=new Information($titre, $contenu, $_SESSION['id']);
         $message->ecritureBD($co);
+        header("Location: ../view/informations.php");
     }
     else echo 'Vous n \'avez pas la permission'.'</br>';
 }
