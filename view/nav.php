@@ -6,8 +6,8 @@ if(isConnected()){
     $connect = true;
     switch ($_SESSION["type"]){
         case "candidat":
-            $menu["Connecté comme candidat"]="";
             $menu["Mes documents"]="documents.php";
+            $menu["Connecté comme candidat"]="";
             break;
         case "responsable":
             $menu["Connecté comme responsable"]="";
