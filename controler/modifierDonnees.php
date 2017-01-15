@@ -8,12 +8,11 @@ session_start();
 
 if (isConnected())
 {
-        $candidat = new Candidat($_SESSION['id'], $co, NULL);
+        $candidat = new Candidat($_SESSION['id'], $co,NULL);
         if (isset($_POST["tel"]) && !empty($_POST["tel"])) {
             $candidat->setTel($_POST["tel"]);
         }
         if (isset($_POST["nom"]) && !empty($_POST["nom"])) {
-            echo "rentré";
             $candidat->setNom($_POST["nom"]);
         }
         if (isset($_POST["prenom"]) && !empty($_POST["prenom"])) {
@@ -37,7 +36,9 @@ if (isConnected())
             }
         }
         $candidat->ecrireModif($co);
+        var_dump($candidat);
         echo "Nouvelles informations enregistrees";
+        header("Location: ../view/index.php");
     }
     else die("Vous devez etre connecte");
 

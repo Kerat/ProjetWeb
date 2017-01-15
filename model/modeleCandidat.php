@@ -21,7 +21,7 @@ require_once "User.php";
 			$this->tel = '';
 		}
 
-		function __construct3($id, $co, $unused)
+		function __construct3($id, $co,$unused)
 		{
 			$succes=true;
 			$req = mysqli_query($co, "SELECT * FROM Candidat WHERE id_candidat='$id'") or die("erreur req");
@@ -55,7 +55,7 @@ require_once "User.php";
 		}
 		function ecrireModif($co)
 		{
-			$req = mysqli_query($co, "UPDATE candidat SET prenom='$this->prenom', nom='$this->nom', email='$this->email', numeroTelephone='$this->tel', login='$this->login', motDePasse='$this->mdp' WHERE id_candidat='$this->idCand'");
+			$req = mysqli_query($co, "UPDATE Candidat SET prenom='$this->prenom', nom='$this->nom', email='$this->email', numeroTelephone='$this->tel', login='$this->login', motDePasse='$this->mdp' WHERE id_candidat='$this->idCand';");
 		}
 		public static function afficherListeNom($co, $top)
 		{

@@ -39,9 +39,10 @@ else {
     </div>
     <div class="top-bar-right" id="menuHautContenu" style="text-align: right">
         <?php if($connect): ?>
-            <form action="../controler/deconnexion.php" method="post">
-                <input class="button alert" type="submit" name="deconnexion" value="Déconnexion"/>
-            </form>
+            <?php if(!isResponsable()): ?>
+                <a class="button" href="modifInfos.php">Éditer profil</a>
+            <?php endif ?>
+            <a class="button alert" href="../controler/deconnexion.php">Déconnexion</a>
         <?php endif ?>
     </div>
 </div>
