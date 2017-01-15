@@ -2,11 +2,12 @@
 require_once "../model/functions.php";
 require_once "../model/modeleCandidat.php";
 require_once "../model/connexion.php";
+$title="Consulter la liste des candidats";
+
 include "header.php";
 include "nav.php";
 if (isset($_POST['nom']) && !empty ($_POST['nom']))$nom=$_POST['nom'];
 if (isset($_POST['id_cand']) && !empty ($_POST['id_cand']))$idCand=$_POST['id_cand'];
-
 if (!empty($_POST['nom']))$top=$_POST['nom'];
 ?>
 <form method="post" name="1" style="background-color: #eee">
@@ -24,7 +25,7 @@ if (!empty($_POST['nom']))$top=$_POST['nom'];
 
 
 <?php
-        if(!empty($_POST['id_cand'])){ $id_cand=$_POST['id_cand']; $cand=new Candidat($_POST['id_cand'], $co, NULL);
+        if(!empty($_POST['id_cand'])&&($_POST['id_cand']>0)){ $id_cand=$_POST['id_cand']; $cand=new Candidat($_POST['id_cand'], $co, NULL);
             $tel=$cand->getTel();
             ?>
     <div class="card-divider" style="background-color: #eee">
