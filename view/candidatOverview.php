@@ -4,16 +4,19 @@ require_once "../model/modeleCandidat.php";
 require_once "../model/connexion.php";
 include "header.php";
 include "nav.php";
+if (isset($_POST['nom']) && !empty ($_POST['nom']))$nom=$_POST['nom'];
+if (isset($_POST['id_cand']) && !empty ($_POST['id_cand']))$idCand=$_POST['id_cand'];
 
 if (!empty($_POST['nom']))$top=$_POST['nom'];
 ?>
 <form method="post" name="1" style="background-color: #eee">
     <select  name="nom" onchange="document.forms['1'].submit();">
-        <?php Candidat::afficherListeNom($co, $top);?>
+        <option value="-1"> Selectionner un nom</option>
+        <?php Candidat::afficherListeNom($co, $nom);?>
     </select>
     <select name="id_cand" onchange="document.forms['1'].submit();">
-
-        <?php Candidat::afficherListePrenom($co, $_POST['nom']);?>
+        <option value="-1"> Selectionner un prenom</option>
+        <?php Candidat::afficherListePrenom($co, $nom);?>
 
     </select>
 
@@ -21,8 +24,7 @@ if (!empty($_POST['nom']))$top=$_POST['nom'];
 
 
 <?php
-if (!empty($_POST['nom']))$nom=$_POST['nom'];
-        if(!empty($_POST['id_cand'])){ $id_cand=$_POST['id_cand']; $cand=new Candidat($id_cand, $co, NULL);
+        if(!empty($_POST['id_cand'])){ $id_cand=$_POST['id_cand']; $cand=new Candidat($_POST['id_cand'], $co, NULL);
             $tel=$cand->getTel();
             ?>
     <div class="card-divider" style="background-color: #eee">
