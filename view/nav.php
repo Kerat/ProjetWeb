@@ -23,7 +23,9 @@ else {
     $menu=array();
     $message="Vous n'êtes pas connecté.";
 }
+
 ?>
+
 <div class="top-bar" id="menuHaut" style="height: 65px">
     <div class="top-bar-left" id="menuHautContenu">
         <?php if($connect):?>

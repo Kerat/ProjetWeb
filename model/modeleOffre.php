@@ -37,4 +37,22 @@
 		{
 			return $this->id_offre;
 		}
+		public static function nomEntreprise($id_offre, $co)
+		{
+			$req=mysqli_query($co, "SELECT id_entreprise FROM emisepar WHERE id_offre='$id_offre';");
+			while($ligne=mysqli_fetch_assoc($req))
+			{
+				$id_ent=$ligne["id_entreprise"];
+				$req2=mysqli_query($co, "SELECT nom FROM entreprise WHERE id_entreprise='$id_ent';");
+				while ($ligne2=mysqli_fetch_assoc($req2))
+				{
+					$nom=$ligne2["nom"];
+
+					echo '<td>'.$nom.'</td>';
+				}
+
+
+
+			}
+		}
 	}

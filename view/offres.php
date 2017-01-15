@@ -1,14 +1,16 @@
 <?php
+
     require_once "../model/functions.php";
     require_once "../model/connexion.php";
 
     $title = "Consulter les offres";
 
-    include "header.php";
-    include "nav.php";
+include "header.php";
+include "nav.php";
 
     if(isConnected()){
         if(isResponsable()):
+
             ?>
             <div style="background-color: #eee;text-align: left">
                 <form action="../view/ajoutOffre.php" method="post">
@@ -39,6 +41,7 @@
         include "footer.php";
     }
     else{
+
         header("Location: index.php");
     }
 ?>
