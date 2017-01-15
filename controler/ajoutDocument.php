@@ -33,7 +33,7 @@ if (isConnected())
         }
         else
         {
-            $doc=new Document($titre.'_'.$_FILES['avatar']['name'], -1, $_SESSION['id'], 'upload/'.$fichier);
+            $doc=new Document($name.'_'.$_FILES['avatar']['name'], -1, $_SESSION['id'], 'upload/'.$fichier);
             $doc->ecritureBd($co);
         }
     }

@@ -45,6 +45,7 @@ require_once "User.php";
 		{
 			return $this->tel;
 		}
+
 		function inscription($co) {
 
 				$req = mysqli_query($co, "INSERT INTO candidat(id_candidat, nom, prenom, dateDeNaissance, email, numeroTelephone, login, motDePasse) VALUES ('$this->idCand','$this->nom','$this->prenom','$this->dateNaissance','$this->email','$this->tel','$this->login','$this->mdp')");
@@ -57,21 +58,21 @@ require_once "User.php";
 		{
 			$req = mysqli_query($co, "UPDATE Candidat SET prenom='$this->prenom', nom='$this->nom', email='$this->email', numeroTelephone='$this->tel', login='$this->login', motDePasse='$this->mdp' WHERE id_candidat='$this->idCand';");
 		}
-		public static function afficherListeNom($co, $top)
+		 public static function afficherListeNom($co, $top)
 		{
 
 			$req = mysqli_query($co, "SELECT DISTINCT(nom) FROM Candidat");
-			echo mysqli_affected_rows($co);
 			while ($data = mysqli_fetch_array($req)) {
-				if($data["nom"]==$top)$estPris=" selected ";
-				else $estPris='';
-				echo '<option value='.$data["nom"].$estPris.'>' . $data["nom"] . '</option><br/>';
+				$estPris='';
+				if($data["nom"]==$top)$estPris=' selected ';
+				echo '<option value='.$data["nom"].$estPris.'>' . $data["nom"] . '</option>';
 			}
 		}
-		public static function afficherListePrenom($co, $nom)
+
+		 public static function afficherListePrenom($co, $nom)
 		{
-			$req = mysqli_query($co, "SELECT prenom FROM Candidat WHERE nom='$nom'");
-			echo mysqli_affected_rows($co);
+			$req = mysqli_query($co, "SELECT prenom, id_candidat FROM Candidat WHERE nom='$nom'");
+
 			while ($data = mysqli_fetch_array($req)) {
 				echo '<option value='.$data["id_candidat"].'>' . $data["prenom"] . '</option><br/>';
 			}

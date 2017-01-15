@@ -10,6 +10,7 @@ if(isConnected()){
             $menu["Connecté comme candidat"]="";
             break;
         case "responsable":
+            $menu["Consulter liste candidats"]="candidatOverview.php";
             $menu["Connecté comme responsable"]="";
             break;
         default:
