@@ -17,7 +17,7 @@
             unset($candidat);
             $responsable = new Responsable($login,$mdp);
             if($responsable->connexion($co)){
-                echo "OK responsable";
+                header("Location: ../view/index.php");
             }
             else{
                 header("Location: ../view/index.php");

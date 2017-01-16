@@ -9,6 +9,7 @@ include "nav.php";
 if (isset($_POST['nom']) && !empty ($_POST['nom']))$nom=$_POST['nom'];
 if (isset($_POST['id_cand']) && !empty ($_POST['id_cand']))$idCand=$_POST['id_cand'];
 ?>
+    <a href="ajoutCandidats.php" class="button">Ajouter un/des candidats</a>
     <form method="post" name="1" style="background-color: #eee">
         <select  name="nom" onchange="this.form.submit();">
             <option value="-1"> Selectionner un nom</option>

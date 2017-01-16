@@ -18,7 +18,7 @@ if(isConnected()){?>
         </tr>
         </thead>
         <tbody>
-    <?php $req = "SELECT * FROM Document ORDER BY id_document DESC;";
+    <?php $req = "SELECT * FROM Document WHERE id_candidat = ".$_SESSION['id']." ORDER BY id_document DESC;";
     $results = mysqli_query($co,$req);
     while($ligne = mysqli_fetch_assoc($results)){
         $nom = $ligne["nom"];
